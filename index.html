@@ -291,16 +291,34 @@
     <div class="intro-bar"></div>
   </section>
 
-  <!-- SCREEN 2: I have something to tell you -->
+
+
+  <!-- NEW CODE VVV-->
+    <!-- SCREEN 3: new intro -->
+  <section class="screen" id="screen-extra-1">
+    <span class="intro-word">I've been thinking about you...</span>
+    <div class="intro-bar"></div>
+  </section>
+
+  <!-- SCREEN 4: new intro -->
+  <section class="screen" id="screen-extra-2">
+    <span class="intro-word">... as a friend kkkk</span>
+    <div class="intro-bar"></div>
+  </section>
+  <!-- NEW CODE ^^^-->
+
+
+
+   <!-- SCREEN 2: I have something to tell you -->
   <section class="screen" id="screen-tell">
-    <span class="intro-word">I have something<br>to tell you...</span>
+    <span class="intro-word">and I have something<br>to tell you...</span>
     <div class="intro-bar"></div>
   </section>
 
   <!-- SCREEN 3: Question -->
   <section class="screen" id="screen-question">
     <span id="q-rose" aria-hidden="true">🌹</span>
-    <h1 id="q-text">Me da outra chance<br>de te fazer feliz?<br> <em>To disposto a fazer tudo diferente, <br>e te contar tudo que aconteceu.</em></h1>
+    <h1 id="q-text">Me dá outra chance<br>de te conquistar?<br> <em>To disposto a fazer tudo diferente, <br>e te contar tudo que aconteceu.</em></h1>
     <div id="caption-wrap" aria-live="polite" aria-atomic="true">
       <p id="caption"></p>
     </div>
@@ -323,6 +341,10 @@
     /* ── CONFIG ── */
     const HOLD_HEY  = 2200;  // ms "hey" is visible
     const HOLD_TELL = 2500;  // ms second intro is visible
+    /*  NEW CODE VVV  */
+    const HOLD_EXTRA1 = 2200;
+    const HOLD_EXTRA2 = 2200;
+    /*  NEW CODE ^^^  */
     const FADE      = 650;   // matches CSS transition
     const GAP       = 280;   // silence between screens
 
@@ -350,6 +372,10 @@
     const sHey   = document.getElementById('screen-hey');
     const sTell  = document.getElementById('screen-tell');
     const sQ     = document.getElementById('screen-question');
+    /* NEW CODE VVV */
+    const sExtra1 = document.getElementById('screen-extra-1');
+    const sExtra2 = document.getElementById('screen-extra-2');
+    /* NEW CODE ^^^ */
     const sYes   = document.getElementById('screen-yes');
     const btnYes = document.getElementById('btn-yes');
     const btnNo  = document.getElementById('btn-no');
@@ -385,11 +411,27 @@
             show(sTell);
             setTimeout(() => {
               hide(sTell);
+              /* NEW CODE VVV */
               setTimeout(() => {
-                show(sQ);
-                positionNoBtn();        // place No near Yes
-                setTimeout(() => btnNo.classList.add('ready'), 300); // fade it in
-              }, GAP);
+                show(sExtra1);
+                setTimeout(() => {
+                  hide(sExtra1);
+                  setTimeout(() => {
+                    show(sExtra2);
+                    setTimeout(() => {
+                      hide(sExtra2);
+                      /* NEW CODE VVV */
+                      setTimeout(() => {
+                        show(sQ);
+                        positionNoBtn();        // place No near Yes
+                        setTimeout(() => btnNo.classList.add('ready'), 300); // fade it in
+                      }, GAP);
+                    /* NEW CODE VVV */
+                    }, HOLD_EXTRA2);
+                  }, FADE + GAP);
+                }, HOLD_EXTRA1);
+              }, FADE + GAP);
+                    /* NEW CODE ^^^ */
             }, HOLD_TELL);
           }, FADE + GAP);
         }, HOLD_HEY);
