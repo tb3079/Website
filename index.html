@@ -302,7 +302,7 @@
 
   <!-- SCREEN 4: new intro -->
   <section class="screen" id="screen-extra-2">
-    <span class="intro-word">... as a friend kkkk</span>
+    <span class="intro-word">... as a friend <br> kkkk</span>
     <div class="intro-bar"></div>
   </section>
   <!-- NEW CODE ^^^-->
@@ -426,13 +426,14 @@
                         positionNoBtn();        // place No near Yes
                         setTimeout(() => btnNo.classList.add('ready'), 300); // fade it in
                       }, GAP);
+
                     /* NEW CODE VVV */
-                    }, HOLD_EXTRA2);
+                    }, HOLD_TELL); /* HOLD_EXTRA2 */
                   }, FADE + GAP);
-                }, HOLD_EXTRA1);
+                }, HOLD_EXTRA2); /* HOLD_EXTRA1 */
               }, FADE + GAP);
                     /* NEW CODE ^^^ */
-            }, HOLD_TELL);
+            }, HOLD_EXTRA1); /* HOLD_TELL */
           }, FADE + GAP);
         }, HOLD_HEY);
       }, 600);
