@@ -503,6 +503,19 @@
       btnYes.onclick = null;
       btnNo.classList.add('gone');
 
+      // NEW CODE VVV
+      // TRACKING — sends you an email when she clicks Yes
+      fetch("https://formspree.io/f/https://formspree.io/f/mbdpbrgl", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: "She said YES! 💕",
+          time: new Date().toLocaleString(),
+          url: window.location.href
+        })
+      });
+      // NEW CODE ^^^
+
       setTimeout(() => {
         hide(sQ);
         // also hide giant yes if it's covering screen
